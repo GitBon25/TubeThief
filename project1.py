@@ -16,12 +16,20 @@ class Window1(QMainWindow):
     def show_new_window(self, checked):
         self.w2 = Window2()
         self.w2.show()
-
+        self.close()
 
 class Window2(QMainWindow):
     def __init__(self):
         super(Window2, self).__init__()
         uic.loadUi("project2.ui", self)
+
+        self.download_button.clicked.connect(self.download)
+
+    def download(ytlink):
+        youtubelink = pytube.YouTube(ytlink)
+        video = youtubelink.streams.get_highest_resolution()
+        video.download()
+
 
 
 if __name__ == "__main__":
