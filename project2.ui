@@ -56,7 +56,7 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QPushButton" name="pushButton_5">
+    <widget class="QPushButton" name="download_button">
      <property name="geometry">
       <rect>
        <x>390</x>
@@ -240,6 +240,97 @@ background-color: rgb(217, 215, 230);
      </property>
      <property name="text">
       <string>Video</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="directory">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>23</x>
+       <y>560</y>
+       <width>362</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Product Sans</family>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+background-color: rgb(52, 55, 74);
+color: rgb(215, 215, 230);
+border-radius: 35px;
+padding-left: 20px;
+padding-right: 20px;
+}</string>
+     </property>
+     <property name="inputMask">
+      <string/>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="placeholderText">
+      <string>directory</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="browse">
+     <property name="geometry">
+      <rect>
+       <x>395</x>
+       <y>560</y>
+       <width>70</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>70</width>
+       <height>70</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>70</width>
+       <height>70</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Product Sans Medium</family>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+background-color: rgb(233, 231, 248);
+border-radius: 35px;
+color: rgb(53, 45, 101);
+}
+QPushButton:hover {
+background-color: rgb(240, 238, 255);
+}
+QPushButton:pressed {
+background-color: rgb(217, 215, 230);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>C:/Users/vanka/Downloads/folder_open_22dp_352D65_FILL0_wght400_GRAD0_opsz24.png</normaloff>C:/Users/vanka/Downloads/folder_open_22dp_352D65_FILL0_wght400_GRAD0_opsz24.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>40</width>
+       <height>40</height>
+      </size>
      </property>
     </widget>
    </widget>

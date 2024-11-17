@@ -56,7 +56,7 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QPushButton" name="pushButton_5">
+    <widget class="QPushButton" name="down1">
      <property name="geometry">
       <rect>
        <x>390</x>
@@ -173,6 +173,18 @@ background-color: rgb(217, 215, 230);
        <height>70</height>
       </rect>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>442</width>
+       <height>70</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>442</width>
+       <height>70</height>
+      </size>
+     </property>
      <property name="font">
       <font>
        <family>Product Sans</family>
@@ -221,10 +233,10 @@ padding-right: 20px;
      </property>
      <property name="font">
       <font>
-       <family>Product Sans</family>
+       <family>ProductBold</family>
        <pointsize>36</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
+       <weight>50</weight>
+       <bold>false</bold>
       </font>
      </property>
      <property name="layoutDirection">
@@ -268,10 +280,10 @@ color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:1, y2:0.500136, stop:0 rgba(
      </property>
      <property name="font">
       <font>
-       <family>Product Sans</family>
+       <family>ProductBold</family>
        <pointsize>36</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
+       <weight>50</weight>
+       <bold>false</bold>
       </font>
      </property>
      <property name="layoutDirection">
@@ -315,10 +327,10 @@ color: rgb(255, 255, 255);
      </property>
      <property name="font">
       <font>
-       <family>Product Sans</family>
+       <family>ProductBold</family>
        <pointsize>36</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
+       <weight>50</weight>
+       <bold>false</bold>
       </font>
      </property>
      <property name="layoutDirection">

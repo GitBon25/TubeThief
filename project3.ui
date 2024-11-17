@@ -79,10 +79,10 @@
      </property>
      <property name="font">
       <font>
-       <family>Product Sans</family>
+       <family>ProductBold</family>
        <pointsize>36</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
+       <weight>50</weight>
+       <bold>false</bold>
       </font>
      </property>
      <property name="layoutDirection">
@@ -126,10 +126,10 @@ color: rgb(255, 255, 255);
      </property>
      <property name="font">
       <font>
-       <family>Product Sans</family>
+       <family>ProductBold</family>
        <pointsize>36</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
+       <weight>50</weight>
+       <bold>false</bold>
       </font>
      </property>
      <property name="layoutDirection">
