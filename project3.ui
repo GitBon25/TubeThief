@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>488</width>
+    <height>270</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>488</width>
+    <height>270</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>488</width>
+    <height>270</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>488</width>
+      <height>270</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>488</width>
+      <height>270</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>488</width>
+      <height>270</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(28, 27, 32);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>23</x>
+       <y>70</y>
+       <width>442</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>442</width>
+       <height>70</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>442</width>
+       <height>70</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>ProductBold</family>
+       <pointsize>36</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+color: rgb(255, 255, 255);
+}</string>
+     </property>
+     <property name="text">
+      <string>complete</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::AutoText</enum>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>23</x>
+       <y>10</y>
+       <width>442</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>442</width>
+       <height>70</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>442</width>
+       <height>70</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>ProductBold</family>
+       <pointsize>36</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+color: rgb(255, 255, 255);
+}</string>
+     </property>
+     <property name="text">
+      <string>Downloading</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::AutoText</enum>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="close_button">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>160</y>
+       <width>162</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>162</width>
+       <height>81</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>162</width>
+       <height>81</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Product Sans Medium</family>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+background-color: rgb(201, 191, 254);
+border-radius: 25px;
+color: rgb(53, 45, 101);
+}
+QPushButton:hover {
+background-color: rgb(215, 207, 254);
+}
+QPushButton:pressed {
+background-color: rgb(187, 178, 236);
+}</string>
+     </property>
+     <property name="text">
+      <string>Close</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="view">
+     <property name="geometry">
+      <rect>
+       <x>256</x>
+       <y>160</y>
+       <width>162</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>162</width>
+       <height>81</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>162</width>
+       <height>81</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Product Sans Medium</family>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+background-color: rgb(233, 231, 248);
+border-radius: 25px;
+color: rgb(53, 45, 101);
+}
+QPushButton:hover {
+background-color: rgb(240, 238, 255);
+}
+QPushButton:pressed {
+background-color: rgb(217, 215, 230);
+}</string>
+     </property>
+     <property name="text">
+      <string>View</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
