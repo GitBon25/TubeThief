@@ -1,27 +1,25 @@
 import sys, pyperclip, subprocess, pytube, csv, os
 from PyQt6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
-from PyQt6 import uic, QtCore
-from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QIcon, QPixmap
+from PyQt6 import uic
+from PyQt6.QtGui import QIcon
 import yt_dlp as youtube_dl
 from PIL import Image
 
-ytlink = "" 
+ytlink = ""
 directory = ""
 video_audio = 0
-"https://youtu.be/R9Vtzap-YwM?si=lXfUB46uGwhNE0ZP"
-
 
 
 class Window1(QMainWindow):
     def __init__(self):
         super(Window1, self).__init__()
-        uic.loadUi("project1.ui", self)  
+        uic.loadUi("project1.ui", self)
 
-        self.url_edit.setText(pyperclip.paste())  
+        self.url_edit.setText(pyperclip.paste())
         self.w2 = Window2()
 
-        self.url_set.clicked.connect(lambda: self.url_edit.setText(pyperclip.paste()))
+        self.url_set.clicked.connect(
+            lambda: self.url_edit.setText(pyperclip.paste()))
         self.down1.clicked.connect(self.show_new_window)
 
         download_icon = QIcon("download.png")
@@ -31,10 +29,10 @@ class Window1(QMainWindow):
 
     def show_new_window(self):
         global ytlink
-        ytlink = str(self.url_edit.text())  
+        ytlink = str(self.url_edit.text())
 
         try:
-            pytube.YouTube(ytlink)  
+            pytube.YouTube(ytlink)
         except pytube.exceptions.RegexMatchError:
             msg = QMessageBox()
             msg.setWindowTitle("Invalid Link")
@@ -47,17 +45,21 @@ class Window1(QMainWindow):
         with youtube_dl.YoutubeDL() as ydl:
             info_dict = ydl.extract_info(ytlink, download=False)
             video_title = info_dict.get('title', None)
-        
-        command = f"yt-dlp --write-thumbnail --skip-download -o \"thumbnail\" {ytlink}"
+            uploader = info_dict.get("uploader", None)
+
+        command = f"yt-dlp --write-thumbnail --skip-download -o \"thumbnail\" {
+            ytlink}"
         subprocess.call(command, shell=True)
-        output_size = (442, 224)  
+        output_size = (442, 224)
         output_image = "resized_thumbnail.webp"
         with Image.open("thumbnail.webp") as img:
             img = img.resize(output_size)
             img.save(output_image)
-        self.w2.thumbnail.setStyleSheet(f"QFrame {{ background-image: url(resized_thumbnail.webp); background-repeat: no-repeat; background-position: center; }}")
-        self.w2.show()
+        self.w2.thumbnail.setStyleSheet(
+            f"QFrame {{ background-image: url(resized_thumbnail.webp); background-repeat: no-repeat; background-position: center; }}")
         self.w2.title.setText(video_title)
+        self.w2.uploader_title.setText(uploader)
+        self.w2.show()
         self.close()
 
 
@@ -78,18 +80,18 @@ class Window2(QMainWindow):
         self.browse.setIcon(directory_icon)
 
         self.w3 = Window3
-        
+
     def download(self):
         global video_audio
         if video_audio == 1:
             self.download_video()
         elif video_audio == 2:
             self.download_mp3()
-    
+
     def download_video(self):
         try:
             global ytlink
-            ydl_opts = {'format': 'bestvideo[height<=?4K]+bestaudio/best', 
+            ydl_opts = {'format': 'bestvideo[height<=?4K]+bestaudio/best',
                         'outtmpl': f'{self.directory.text()}/%(title)s.%(ext)s'
                         }
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
@@ -148,7 +150,8 @@ class Window2(QMainWindow):
 
     def getDirectory(self):
         global directory
-        directory = QFileDialog.getExistingDirectory(self, "Выбрать папку", ".")
+        directory = QFileDialog.getExistingDirectory(
+            self, "Выбрать папку", ".")
         self.directory.clear()
         self.directory.setText(directory)
 
@@ -183,4 +186,4 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     card_form = Window1()
     card_form.show()
-    sys.exit(app.exec()) 
+    sys.exit(app.exec())
