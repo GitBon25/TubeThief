@@ -8,6 +8,7 @@ from PIL import Image
 ytlink = ""
 directory = ""
 video_audio = 0
+test = 0
 
 
 class Window1(QMainWindow):
@@ -21,14 +22,23 @@ class Window1(QMainWindow):
         self.url_set.clicked.connect(
             lambda: self.url_edit.setText(pyperclip.paste()))
         self.down1.clicked.connect(self.show_new_window)
+        self.geo_check.stateChanged.connect(self.check_geo_state)
 
         download_icon = QIcon("download.png")
         paste_icon = QIcon("paste.png")
         self.down1.setIcon(download_icon)
         self.url_set.setIcon(paste_icon)
 
+    def check_geo_state(self):
+        global test
+        if self.geo_check.isChecked():
+            test = 1
+        else:
+            test = 0
+
     def show_new_window(self):
         global ytlink
+        global test
         ytlink = str(self.url_edit.text())
 
         try:
@@ -42,13 +52,19 @@ class Window1(QMainWindow):
             msg.exec()
             return
 
-        with youtube_dl.YoutubeDL() as ydl:
+        if test = 1:
+            ydl_opts = {'geo_bypass': True}
+            command = f"yt-dlp --geo-bypass --write-thumbnail --skip-download -o \"thumbnail\" {
+            ytlink}"
+        else:
+            ydl_opts = {}
+            f"yt-dlp --write-thumbnail --skip-download -o \"thumbnail\" {
+            ytlink}"
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(ytlink, download=False)
             video_title = info_dict.get('title', None)
             uploader = info_dict.get("uploader", None)
 
-        command = f"yt-dlp --write-thumbnail --skip-download -o \"thumbnail\" {
-            ytlink}"
         subprocess.call(command, shell=True)
         output_size = (442, 224)
         output_image = "resized_thumbnail.webp"
@@ -90,10 +106,17 @@ class Window2(QMainWindow):
 
     def download_video(self):
         try:
+            global test
             global ytlink
-            ydl_opts = {'format': 'bestvideo[height<=?4K]+bestaudio/best',
-                        'outtmpl': f'{self.directory.text()}/%(title)s.%(ext)s'
-                        }
+            if test = 1:
+                ydl_opts = {'format': 'bestvideo[height<=?4K]+bestaudio/best',
+                            'geo_bypass': True,
+                            'outtmpl': f'{self.directory.text()}/%(title)s.%(ext)s'
+                            }
+            else:
+                ydl_opts = {'format': 'bestvideo[height<=?4K]+bestaudio/best',
+                            'outtmpl': f'{self.directory.text()}/%(title)s.%(ext)s'
+                            }
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
                 try:
                     ydl.cache.remove()
@@ -113,15 +136,28 @@ class Window2(QMainWindow):
             msg.exec()
 
     def download_mp3(self):
+        global test
+        global ytlink
         try:
-            ydl_opts = {
-                'format': 'bestaudio/best',
-                'outtmpl': f'{self.directory.text()}/%(title)s.%(ext)s',
-                'postprocessors': [{
-                    'key': 'FFmpegExtractAudio',
-                    'preferredcodec': 'mp3',
-                    'preferredquality': '192',
-                }]}
+            if test = 1:
+                ydl_opts = {
+                    'format': 'bestaudio/best',
+                    'geo_bypass': True,
+                    'outtmpl': f'{self.directory.text()}/%(title)s.%(ext)s',
+                    'postprocessors': [{
+                        'key': 'FFmpegExtractAudio',
+                        'preferredcodec': 'mp3',
+                        'preferredquality': '192',
+                    }]}
+            else:
+                ydl_opts = {
+                    'format': 'bestaudio/best',
+                    'outtmpl': f'{self.directory.text()}/%(title)s.%(ext)s',
+                    'postprocessors': [{
+                        'key': 'FFmpegExtractAudio',
+                        'preferredcodec': 'mp3',
+                        'preferredquality': '192',
+                    }]}
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
                 try:
                     ydl.cache.remove()
@@ -173,7 +209,12 @@ class Window3(QMainWindow):
         if os.path.exists(directory):
             os.startfile(os.path.dirname(directory))
         else:
-            print("Файл не найден.")
+            msg = QMessageBox()
+            msg.setWindowTitle("Directory error")
+            msg.setText(f"Directory not found")
+            msg.setIcon(QMessageBox.Icon.Information)
+            msg.setStandardButtons(QMessageBox.StandardButton.Ok)
+            msg.exec()
 
     def close(self):
         app = QApplication.instance()
